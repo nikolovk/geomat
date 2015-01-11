@@ -39,7 +39,15 @@
                             <a href = "take_common.php">Take Job</a>
                         </li>
                         <li>
-                            <a href = "list_common_job.php">List my activities</a>
+                            <a href = "list_common_job.php">List My Activities</a>
+                            <ul class="dropdown">
+                                <li>
+                                    <a href="list_current_job.php">Current Activities</a>
+                                </li>
+                                <li>
+                                    <a href="list_finished_job.php">Finished Activities</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href = "list_lot.php">List lot</a>

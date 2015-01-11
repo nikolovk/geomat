@@ -22,6 +22,16 @@ if ($_SESSION['logged_in'] != true) {
         while ($row = $result->fetch()) {
             $lots[$row[lot]] = $row[lot];
         }
-        echo json_encode($lots);
+
+        $sql = "SELECT id, name FROM activities WHERE id_project = $id_project ORDER BY id";
+        $result = $db->query($sql);
+        $activities = array();
+        while ($row = $result->fetch()) {
+            $activities[$row[id]] = $row[name];
+        }
+        echo json_encode(array(
+            'lots'=>$lots,
+            'activities'=>$activities
+        ));
     }
 }

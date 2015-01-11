@@ -5,7 +5,7 @@ if (($_SESSION['logged_in'] != true) || ((int) $_SESSION['user']['rights'] < 5 )
     exit;
 } else {
     include 'inc/head.php';
-    $result = $db->query('SELECT id, name FROM projects ORDER BY id');
+    $result = $db->query('SELECT id, name, archived FROM projects ORDER BY id');
     ?>
     <button id="add_project" onclick="ShowAddProject()">Add Project</button>
     <table>
@@ -15,6 +15,7 @@ if (($_SESSION['logged_in'] != true) || ((int) $_SESSION['user']['rights'] < 5 )
             <th>Name</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Archive</th>
         </tr>
         <?php while ($row = $result->fetch()) { ?>
             <tr id="<?php echo $row['id']; ?>">
@@ -22,6 +23,16 @@ if (($_SESSION['logged_in'] != true) || ((int) $_SESSION['user']['rights'] < 5 )
                 <td><?php echo $row['name']; ?></td>
                 <td><button onclick="ShowEditProject(<?php echo $row['id']; ?>)">Edit</button></td>
                 <td><button onclick="DeleteProject(<?php echo $row['id']; ?>)">Delete</button></td>
+                <td>
+                    <?php
+                    if ($row['archived'] == 0) {
+                        echo '<button onclick="ArchivedProject(' . $row['id'] . ')">Archive</button>';
+                    } else {
+                        echo '<button onclick="NotArchivedProject(' . $row['id'] . ')">Not Archive</button>';
+                    }
+                    ?>
+
+                </td>
             </tr>
         <?php } ?>
     </table>

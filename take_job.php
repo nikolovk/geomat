@@ -39,7 +39,7 @@ if ($_SESSION['logged_in'] != true) {
             <input type="hidden" name="_submit_check" value="1" />
             <p class="clearfix">
                 <label for="project">Projects:</label>
-                <select name="project" id="project" onchange="ReadActivities()">
+                <select name="project" id="project" onchange="ReadLotsActivities()">
                     <option value="">----</option>
                     <?php
                     $sql_projects = "SELECT id, name FROM projects";
@@ -57,6 +57,12 @@ if ($_SESSION['logged_in'] != true) {
             <p class="clearfix">
                 <label for="activiti">Activities:</label>
                 <select name="activiti" id="activiti">
+                    <option value="">----</option>
+                </select>
+            </p>
+            <p class="clearfix">
+                <label for="lot">Lots:</label>
+                <select name="lot" id="lot">
                     <option value="">----</option>
                 </select>
             </p>
